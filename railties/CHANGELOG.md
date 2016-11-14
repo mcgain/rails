@@ -1,3 +1,10 @@
+*   config.to_prepare init event now runs before the middleware stack is built
+
+    This behaviour now matches the documentation at
+    http://guides.rubyonrails.org/configuring.html#initialization-events
+
+    *Richard McGain*
+
 *   Allow the use of listen's 3.1.x branch
 
     *Esteban Santana Santana*

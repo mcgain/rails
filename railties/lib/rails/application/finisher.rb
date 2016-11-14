@@ -41,14 +41,6 @@ module Rails
         end
       end
 
-      initializer :build_middleware_stack do
-        build_middleware_stack
-      end
-
-      initializer :define_main_app_helper do |app|
-        app.routes.define_mounted_helper(:main_app)
-      end
-
       initializer :add_to_prepare_blocks do |app|
         config.to_prepare_blocks.each do |block|
           app.reloader.to_prepare(&block)
@@ -59,6 +51,15 @@ module Rails
       # in exactly the same point regardless of config.cache_classes
       initializer :run_prepare_callbacks do |app|
         app.reloader.prepare!
+      end
+
+
+      initializer :build_middleware_stack do
+        build_middleware_stack
+      end
+
+      initializer :define_main_app_helper do |app|
+        app.routes.define_mounted_helper(:main_app)
       end
 
       initializer :eager_load! do
